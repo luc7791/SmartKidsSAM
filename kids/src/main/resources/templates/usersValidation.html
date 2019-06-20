@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<HEAD>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <!--<link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+        <title>Getting Started: Serving Web Content</title>
+
+		<script>
+			
+			function addUser(){
+				
+				var v=true;
+				
+				var n=document.getElementById("name").value;
+				var p=document.getElementById("password").value;
+				var e=document.getElementById("email").value;
+				console.log(n);
+				console.log(p);
+				console.log(e);
+				
+				var posAt=e.indexOf("@");
+				var posPct=e.indexOf(".");
+				
+				if(n=="" ||  p=="" || e=="" || posAt<0 || posPct<0){
+					v=false;
+				}
+				
+				if(v==true){
+					document.getElementById("isValid").innerHTML="All fields must have values!!!";
+				}else{
+					document.getElementById("isValid").innerHTML="Well done! User added successfully!";
+				}
+
+			}
+			function validate(){
+
+				var v=true;
+
+				var n=document.getElementById("name2").value;
+				var p=document.getElementById("password2").value;
+				console.log(n);
+				console.log(p);
+
+				var posAt=e.indexOf("@");
+				var posPct=e.indexOf(".");
+
+				if(n=="" ||  p=="" ){
+					v=false;
+				}
+
+				if(v==true){
+					document.getElementById("isValid").innerHTML="This user is not in database!!!";
+				}else{
+					document.getElementById("isValid").innerHTML="Well done! Login successfully!";
+				}
+
+			}
+
+		</script>
+	
+	
+	</HEAD>
+	
+	<BODY>
+
+    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+        <table border="1">
+            <tr>
+                <td><label th:text="Username" /></td>
+                <td><input type="text" th:field="*{userName}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Password" /></td>
+                <td><input type="text" th:field="*{passwrd}" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+		<!--<form>-->
+            <!--<h1 style="text-align:center;color:blue">Welcome to login page!</h1>-->
+
+            <!--<br>-->
+            <!--<br>-->
+            <!--<h2 style="text-align:center;color:blue">Already registered on our site? Please login below</h2>-->
+            <!--Name: <input type="text" id="name2">-->
+            <!--Password: <input type="text" id="password2">-->
+
+            <!--<input type="button" id="logon" value="Login existing user" onclick="validate();">-->
+            <!--<br>-->
+            <!--<br>-->
+
+            <!--<h2 style="text-align:center;color:blue">Are you a new user? Please register below:</h2>-->
+			<!--Name: <input type="text" id="name">-->
+			<!--Password: <input type="text" id="password">-->
+			<!--Email: <input type="text" id="email">-->
+			<!---->
+			<!--<input type="button" id="valid" value="Add new user" onclick="addUser();">-->
+
+
+
+		<!--</form>-->
+		
+		<p id="isValid"></p>
+	
+	</BODY>
+
+</html>
